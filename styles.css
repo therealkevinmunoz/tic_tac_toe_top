@@ -12,6 +12,16 @@
 }
 
 body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-text);
+}
+
+.player-card h1 {
+    color: var(--white-gray);
+}
+
+#game-screen {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 3fr 1fr;
@@ -23,12 +33,13 @@ body {
     font-family: var(--font-text);
 }
 
-button {
+button,
+input {
     font-family: var(--font-text);
     font-weight: var(--font-semibold);
 }
 
-h1 {
+h1{
     text-align: center;
     font-weight: var(--font-bold);
 }
@@ -110,15 +121,84 @@ footer {
     justify-content: center;
 }
 
-#restart-btn {
+#restart-btn,
+#continueButton {
     border: none;
-    background-color: var(--green-highlight);
-    color: var(--arsenic-gray);
     padding: 15px 50px;
     border-radius: 5px;
+}
+
+#restart-btn {
+    background-color: var(--green-highlight);
+    color: var(--arsenic-gray);
 }
 
 #restart-btn:hover {
     cursor: pointer;
     box-shadow: 0 0 8px var(--green-highlight);
+}
+
+#continueButton {
+    background-color: var(--arsenic-gray);
+    color: var(--white-gray);
+}
+
+#continueButton:hover {
+    cursor: pointer;
+    box-shadow: 0 0 8px var(--arsenic-gray)
+}
+
+.game-start-screen {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--light-gray);
+    margin: 0;
+    padding: 20px 0;
+}
+
+.player-card-section {
+    display: flex;
+    gap: 100px;
+    text-align: center;
+    padding: 50px;
+    justify-content: center;
+}
+
+.player-card {
+    background-color: var(--arsenic-gray);
+    width: 20%;
+    padding: 50px;
+    border-radius: .5rem;
+    box-shadow: 0 0 10px var(--arsenic-gray);
+}
+
+
+.player-card:focus-within {
+    transform: scale(1.05);
+}
+
+.player-card img {
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 10rem;
+    border: 1px solid var(--green-highlight);
+    background-color: var(--arsenic-gray);
+    color: var(--white-gray);
+    padding: 5px;
+    
+}
+
+input:focus {
+    box-shadow: 0 0 10px var(--green-highlight);
+    outline: 1px solid var(--green-highlight);
+}
+
+input::placeholder {
+    color: var(--light-gray);
 }
