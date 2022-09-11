@@ -15,6 +15,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: var(--font-text);
+    background-color: var(--light-gray);
 }
 
 .player-card h1 {
@@ -22,7 +23,7 @@ body {
 }
 
 #game-screen {
-    display: grid;
+    display: none;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 3fr 1fr;
     gap: 20px;
@@ -44,9 +45,39 @@ h1{
     font-weight: var(--font-bold);
 }
 
+#game-results {
+    display: none;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    margin: 0;
+    padding: 10px;
+    z-index: 1;
+    top: 0;
+}
+
+.player-won {
+    background-color: var(--green-highlight);
+    box-shadow: 0 0 10px var(--green-highlight);
+    color: var(--arsenic-gray);
+}
+
+.opponent-won {
+    background-color: red;
+    box-shadow: 0 0 10px red;
+    color: var(--white-gray);
+}
+
+.player-opponent-tie {
+    background-color: var(--light-gray);
+    box-shadow: 0 0 10px var(--light-gray);
+    color: var(--arsenic-gray);
+}
+
 #scoreboard {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:repeat(2, 1fr);
+    grid-auto-rows: auto;
     text-align: center;
     justify-content: center;
     gap: 10rem;
@@ -57,6 +88,7 @@ h1{
     border: 2px solid var(--white-gray);
     width: min(300px, 50%);
     border-radius: 5px;
+    position: relative;
 }
 
 .gamer-1-score {
@@ -70,6 +102,20 @@ h1{
 .gamer-score-number {
     font-weight: var(--font-semibold);
 }
+
+.gamer-score img {
+    width: min(25%, 100px);
+    position: absolute;
+}
+
+.gamer-1-score img {
+    left: 0;
+}
+
+.gamer-2-score img {
+    right: 0;
+}
+
 /* gameboard styling for lines */
 
 td[data-cell="1"],
@@ -101,19 +147,25 @@ td[data-cell="9"] {
     border-collapse: collapse;
     max-width: 800px;
     width: 800px;
+    table-layout: fixed;
     justify-self: center;
+}
+
+#gameboard:disabled {
+    pointer-events: none !important;
 }
 
 #gameboard td {
     padding: 50px;
     margin: 0;
     text-align: center;
+    font-size: 32px;
+    height: 100px;
+    
 }
 
 #gameboard td:hover{
     cursor: pointer;
-    background-color: var(--green-highlight);
-    opacity: 5%;
 }
 
 footer {
@@ -149,14 +201,16 @@ footer {
 }
 
 .game-start-screen {
-    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    justify-self: center;
     background-color: var(--light-gray);
     margin: 0;
     padding: 20px 0;
+    width: 100%;
+    height: max-content;
 }
 
 .player-card-section {
@@ -168,6 +222,10 @@ footer {
 }
 
 .player-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: var(--arsenic-gray);
     width: 20%;
     padding: 50px;
@@ -177,7 +235,7 @@ footer {
 
 
 .player-card:focus-within {
-    transform: scale(1.05);
+    transform: scale(1.07);
 }
 
 .player-card img {
@@ -206,17 +264,59 @@ input::placeholder {
 .name-error-msg {
     display: none;
     margin-bottom: 0;
-    background-color: rgb(255, 159, 159);
-    border-radius: 5px;
+    background-color: rgb(248, 201, 201);
     border: 1px solid red;
     font-size: 12px;
+    width: 10rem;
+    padding: 5px;
 }
 
 .name-error {
-    border: 1px solid red;
+    border: 2px solid red;
 }
 
 .name-error:focus {
     box-shadow: 0 0 10px red;
     outline: 1px solid red;
+}
+
+@media (max-width: 600px){
+
+    .player-card-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .player-card  {
+        width: 50%;
+    }
+
+    #game-screen {
+        grid-template-rows: unset;
+    }
+
+    #scoreboard {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .gamer-score {
+        width: 80%;
+    }
+
+    .gamer-1-score {
+        justify-self: center;
+    }
+
+    .gamer-2-score {
+        justify-self: center;
+    }
+
+    #gameboard {
+        width: 80%;
+    }
+
+    #gameboard td {
+        height: 40px;
+    }
 }

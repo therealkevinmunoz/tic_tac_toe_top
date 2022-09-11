@@ -32,32 +32,35 @@
     <div id="game-screen">
         <header>
             <h1>Tic-Tac-Toe</h1>
+            <h3 id="game-results"></h3>
         </header>
         <div id="scoreboard">
             <div class="gamer-score gamer-1-score">
-                <p class="gamer-name">Player 1 Score</p>
-                <p class="gamer-score-number">3</p>
+                <img src="/images/Tic-Tac-Toe Player 1.png" />
+                <p class="gamer-name"><span id="gamer-1-name">Player</span>'s Score</p>
+                <p class="gamer-score-number">0</p>
             </div>
             <div class="gamer-score gamer-2-score">
-                <p class="gamer-name">Player 2 Score</p>
-                <p class="gamer-score-number">4</p>
+                <img src="/images/Tic-Tac-Toe Player 2.png" />
+                <p class="gamer-name"><span id="gamer-2-name">Opponent</span>'s Score</p>
+                <p class="gamer-score-number">0</p>
             </div>
         </div>
-        <table id="gameboard">
+        <table id="gameboard" disabled="false">
             <tr>
-                <td class="gameboard-cell" data-cell="1">X</td>
-                <td class="gameboard-cell" data-cell="2">O</td>
-                <td class="gameboard-cell" data-cell="3">X</td>
+                <td class="gameboard-cell" data-cell="1"> </td>
+                <td class="gameboard-cell" data-cell="2"> </td>
+                <td class="gameboard-cell" data-cell="3"> </td>
             </tr>
             <tr>
-                <td class="gameboard-cell" data-cell="4">X</td>
-                <td class="gameboard-cell" data-cell="5">X</td>
-                <td class="gameboard-cell" data-cell="6">O</td>
+                <td class="gameboard-cell" data-cell="4"> </td>
+                <td class="gameboard-cell" data-cell="5"> </td>
+                <td class="gameboard-cell" data-cell="6"> </td>
             </tr>
             <tr>
-                <td class="gameboard-cell" data-cell="7">O</td>
-                <td class="gameboard-cell" data-cell="8">O</td>
-                <td class="gameboard-cell" data-cell="9">X</td>
+                <td class="gameboard-cell" data-cell="7"> </td>
+                <td class="gameboard-cell" data-cell="8"> </td>
+                <td class="gameboard-cell" data-cell="9"> </td>
             </tr>
         </table>
         <footer>
