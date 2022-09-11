@@ -202,3 +202,21 @@ input:focus {
 input::placeholder {
     color: var(--light-gray);
 }
+
+.name-error-msg {
+    display: none;
+    margin-bottom: 0;
+    background-color: rgb(255, 159, 159);
+    border-radius: 5px;
+    border: 1px solid red;
+    font-size: 12px;
+}
+
+.name-error {
+    border: 1px solid red;
+}
+
+.name-error:focus {
+    box-shadow: 0 0 10px red;
+    outline: 1px solid red;
+}
