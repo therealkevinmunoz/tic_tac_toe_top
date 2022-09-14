@@ -293,6 +293,8 @@ input::placeholder {
 
     #game-screen {
         grid-template-rows: unset;
+        gap: 40px;
+        padding: 40px 0;
     }
 
     #scoreboard {

@@ -98,6 +98,8 @@ const GameController = function(GameBoard)
     let opponentScore = 0;
     let playerScore = 0;
 
+    let winnerFound = false;
+
     const boardEvents = function(event)
     {
         changeTurn(addXorO(event));
@@ -136,19 +138,22 @@ const GameController = function(GameBoard)
     const checkScore = function()
     {
         /* Check the player 1 score horizontally */
-        if((gameBoard[1] === "X" && gameBoard[2] === "X" && gameBoard[3] === "X") || (gameBoard[4] === "X" && gameBoard[5] === "X" && gameBoard[6] === "X") || (gameBoard[7] === "X" && gameBoard[8] === "X" && gameBoard[9] === "X"))
+        if(winnerFound === false && ((gameBoard[1] === "X" && gameBoard[2] === "X" && gameBoard[3] === "X") || (gameBoard[4] === "X" && gameBoard[5] === "X" && gameBoard[6] === "X") || (gameBoard[7] === "X" && gameBoard[8] === "X" && gameBoard[9] === "X")))
         {
+            winnerFound = true;
             gameResults.textContent = "You Win!"
             gameResults.classList.add("player-won");
             gameResults.style.display = "block";
             gameBoardHTML.setAttribute("disabled", true);
+            
 
             playerScore = addScore(playerScore);
             gameScreen.querySelectorAll("#scoreboard .gamer-score-number")[0].textContent = `${playerScore}`;
         }
         /* Check the player 1 score vertically*/
-        else if((gameBoard[1] === "X" && gameBoard[4] === "X" && gameBoard[7] === "X") || (gameBoard[2] === "X" && gameBoard[5] === "X" && gameBoard[8] === "X") || (gameBoard[3] === "X" && gameBoard[6] === "X" && gameBoard[9] === "X"))
+        else if(winnerFound === false && ((gameBoard[1] === "X" && gameBoard[4] === "X" && gameBoard[7] === "X") || (gameBoard[2] === "X" && gameBoard[5] === "X" && gameBoard[8] === "X") || (gameBoard[3] === "X" && gameBoard[6] === "X" && gameBoard[9] === "X")))
         {
+            winnerFound = true;
             gameResults.textContent = "You Win!"
             gameResults.classList.add("player-won");
             gameResults.style.display = "block";
@@ -158,8 +163,9 @@ const GameController = function(GameBoard)
             gameScreen.querySelectorAll("#scoreboard .gamer-score-number")[0].textContent = `${playerScore}`;
         }
         /* Check the player 1 score diagonally */
-        else if((gameBoard[1] === "X" && gameBoard[5] === "X" && gameBoard[9] === "X") || (gameBoard[3] === "X" && gameBoard[5] === "X" && gameBoard[7] === "X"))
+        else if(winnerFound === false && ((gameBoard[1] === "X" && gameBoard[5] === "X" && gameBoard[9] === "X") || (gameBoard[3] === "X" && gameBoard[5] === "X" && gameBoard[7] === "X")))
         {
+            winnerFound = true;
             gameResults.textContent = "You Win!"
             gameResults.classList.add("player-won");
             gameResults.style.display = "block";
@@ -169,8 +175,9 @@ const GameController = function(GameBoard)
             gameScreen.querySelectorAll("#scoreboard .gamer-score-number")[0].textContent = `${playerScore}`;
         }
         /* Check the opponent score horizontally */
-        if((gameBoard[1] === "O" && gameBoard[2] === "O" && gameBoard[3] === "O") || (gameBoard[4] === "O" && gameBoard[5] === "O" && gameBoard[6] === "O") || (gameBoard[7] === "O" && gameBoard[8] === "O" && gameBoard[9] === "O"))
+        if(winnerFound === false && ((gameBoard[1] === "O" && gameBoard[2] === "O" && gameBoard[3] === "O") || (gameBoard[4] === "O" && gameBoard[5] === "O" && gameBoard[6] === "O") || (gameBoard[7] === "O" && gameBoard[8] === "O" && gameBoard[9] === "O")))
         {
+            winnerFound = true;
             gameResults.textContent = "You Lose!"
             gameResults.classList.add("opponent-won");
             gameResults.style.display = "block";
@@ -180,8 +187,9 @@ const GameController = function(GameBoard)
             gameScreen.querySelectorAll("#scoreboard .gamer-score-number")[1].textContent = `${opponentScore}`;
         }
         /* Check the opponent score vertically*/
-        else if((gameBoard[1] === "O" && gameBoard[4] === "O" && gameBoard[7] === "O") || (gameBoard[2] === "O" && gameBoard[5] === "O" && gameBoard[8] === "O") || (gameBoard[3] === "O" && gameBoard[6] === "O" && gameBoard[9] === "O"))
+        else if(winnerFound === false && ((gameBoard[1] === "O" && gameBoard[4] === "O" && gameBoard[7] === "O") || (gameBoard[2] === "O" && gameBoard[5] === "O" && gameBoard[8] === "O") || (gameBoard[3] === "O" && gameBoard[6] === "O" && gameBoard[9] === "O")))
         {
+            winnerFound = true;
             gameResults.textContent = "You Lose!"
             gameResults.classList.add("opponent-won");
             gameResults.style.display = "block";
@@ -191,8 +199,9 @@ const GameController = function(GameBoard)
             gameScreen.querySelectorAll("#scoreboard .gamer-score-number")[1].textContent = `${opponentScore}`;
         }
         /* Check the opponent score diagonally */
-        else if((gameBoard[1] === "O" && gameBoard[5] === "O" && gameBoard[9] === "O") || (gameBoard[3] === "O" && gameBoard[5] === "O" && gameBoard[7] === "O"))
+        else if(winnerFound === false && ((gameBoard[1] === "O" && gameBoard[5] === "O" && gameBoard[9] === "O") || (gameBoard[3] === "O" && gameBoard[5] === "O" && gameBoard[7] === "O")))
         {
+            winnerFound = true;
             gameResults.textContent = "You Lose!"
             gameResults.classList.add("opponent-won");
             gameResults.style.display = "block";
@@ -201,7 +210,7 @@ const GameController = function(GameBoard)
             opponentScore = addScore(opponentScore);
             gameScreen.querySelectorAll("#scoreboard .gamer-score-number")[1].textContent = `${opponentScore}`;
         }
-        else if(gameBoard[1] !== null && gameBoard[2] !== null && gameBoard[3] !== null && gameBoard[4] !== null && gameBoard[5] !== null &&  gameBoard[6] !== null && gameBoard[7] !== null && gameBoard[8] !== null && gameBoard[9] !== null)
+        else if(winnerFound === false && (gameBoard[1] !== null && gameBoard[2] !== null && gameBoard[3] !== null && gameBoard[4] !== null && gameBoard[5] !== null &&  gameBoard[6] !== null && gameBoard[7] !== null && gameBoard[8] !== null && gameBoard[9] !== null))
         {
             gameResults.textContent = "It's a tie!"
             gameResults.classList.add("player-opponent-tie");
@@ -246,6 +255,7 @@ const GameController = function(GameBoard)
 
     const restartGame = function()
     {
+        winnerFound = false;
         playerGameMark = "X";
         gameBoardHTML.setAttribute("disabled", false);
 
